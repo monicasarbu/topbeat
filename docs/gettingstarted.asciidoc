@@ -162,7 +162,7 @@ image:./images/kibana-topbeat-discover.png[Topbeat Discover page in Kibana]
 Kibana has a large set of visualization types which you can combine to create the perfect dashboards 
 for your needs. But this flexibility can be a bit overwhelming at the beginning, so we have created a 
 couple of sample dashboards to give you a good start and to demonstrate what is possible based on the 
-packet data.
+Topbeat data.
 
 To load the sample pages, follow these steps:
 
@@ -183,7 +183,7 @@ as argument of the load.sh command line:
 -------------------------------------------------------------------------
 
 To open the loaded dashboards, go to the Dashboard page and click the "Open" icon. Select the _Topbeat Dashboard_
-from the list. You can then switch easier between the dashboards by using the Navigation widget.
+from the list. You can then easily switch between the dashboards by using the Navigation widget.
 
 image:./images/topbeat-dashboard-short.png[Topbeat Dashboard page in Kibana]
 
