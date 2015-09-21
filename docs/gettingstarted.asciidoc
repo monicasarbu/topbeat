@@ -128,7 +128,7 @@ Check if your servers statistics are present in Elasticsearch:
 curl -XGET 'http://localhost:9200/topbeat-*/_search?pretty'
 ----------------------------------------------------------------------
 
-Make sure to replace `localhost:9200` with the address of your Elasticsearch
+NOTE: Make sure to replace `localhost:9200` with the address of your Elasticsearch
 instance. 
 
 
@@ -138,25 +138,59 @@ After installing Kibana by following the
 https://www.elastic.co/guide/en/beats/packetbeat/current/packetbeat-getting-started.html[getting started guide], open
 the Kibana web interface to get it started.
 
-First, you need to configure the index pattern under the `Settings`. In the *Index name or pattern* field enter
-`topbeat-*` and for the *Time-field name* select `timestamp`.
+==== Configure the index pattern in Kibana
+
+First, you need to configure the index pattern under the _Settings_. In the _Index name or pattern field_ enter
+`[topbeat-]YYYY.MM.DD` and for the _Time-field name_ select `timestamp`.
 
 image:./images/kibana-topbeat-index-pattern.png[Topbeat index pattern in Kibana]
 
-If after you configured the `topbeat-*` index pattern Kibana still says
+If after you configured the `[topbeat-]YYYY.MM.DD` index pattern Kibana still says
 _Unable to fetch mapping. Do you have indices matching the pattern?_, it means
 that Topbeat hasn't yet written any data into Elasticsearch. Make sure
 Topbeat is exporting some statistics.
 
 If everything goes fine, you should already see in real-time statistics reported by
-Topbeat under the *Discover* page:
+Topbeat under the _Discover_ page:
 
 image:./images/kibana-topbeat-discover.png[Topbeat Discover page in Kibana]
 
-You can configure the *Dashboard* page to show the statistics that you are interested in for all the servers or for a
+
+
+=== Sample Kibana dashboards
+
+Kibana has a large set of visualization types which you can combine to create the perfect dashboards 
+for your needs. But this flexibility can be a bit overwhelming at the beginning, so we have created a 
+couple of sample dashboards to give you a good start and to demonstrate what is possible based on the 
+packet data.
+
+To load the sample pages, follow these steps:
+
+[source,shell]
+----------------------------------------------------------------------
+curl -L -O https://download.elasticsearch.org/beats/dashboards/beats-dashboards-1.0.0-beta3.tar.gz
+tar xzvf beats-dashboards-1.0.0-beta3.tar.gz
+cd beats-dashboards-1.0.0-beta3
+./load.sh
+----------------------------------------------------------------------
+
+NOTE: In case the Elasticsearch is not running on `127.0.0.1:9200`, you need to specify the Elasticsearch location
+as argument of the load.sh command line:
+
+[source,shell]
+-------------------------------------------------------------------------
+./load.sh http://192.168.33.60:9200
+-------------------------------------------------------------------------
+
+To open the loaded dashboards, go to the Dashboard page and click the "Open" icon. Select the _Topbeat Dashboard_
+from the list. You can then switch easier between the dashboards by using the Navigation widget.
+
+image:./images/topbeat-dashboard-short.png[Topbeat Dashboard page in Kibana]
+
+==== View statistics per server
+
+The dashboard can show the statistics that you are interested in for all the servers or for a
 subset of them.
-An example of a dashboard page can consist of CPU usage and memory consumption for the top 10 CPU consuming processes
-running on different servers, free and used disk space for all servers, the CPU usage per processes, memory consumption per processes.
 
 image:./images/topbeat-dashboard-example.png[Topbeat Dashboard page in Kibana]
 
