@@ -13,6 +13,19 @@ Get started with your own Topbeat setup by:
 After you have Elasticsearch, Kibana and optionally Logstash installed, you can start <<topbeat-installation>>.
 
 
+=== Installing Elasticsearch
+
+https://www.elastic.co/products/elasticsearch[Elasticsearch] is used for storing and indexing 
+the infrastructure metrics collected by Topbeat. {libbeat}/getting-started.html#elasticsearch-installation[Follow the
+Installation Guide]
+
+
+=== Optionally install Logstash
+
+https://www.elastic.co/products/logstash[Logstash] enters the picture by  
+{libbeat}/getting-started.html#logstash-installation[Follow the Installation Guide]
+
+
 [[topbeat-installation]]
 === Installing Topbeat
 
